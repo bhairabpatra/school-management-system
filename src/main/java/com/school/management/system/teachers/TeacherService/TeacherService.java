@@ -1,13 +1,20 @@
 package com.school.management.system.teachers.TeacherService;
 
+import com.school.management.system.teachers.Exception.TeacherNotFoundException;
 import com.school.management.system.teachers.TeacherEntity.TeacherEntity;
 
 import java.util.List;
 
 public interface TeacherService {
 
-    public TeacherEntity createTeacher(TeacherEntity teacher);
+    TeacherEntity createTeacher(TeacherEntity teacher);
 
-    public List<TeacherEntity> getAllTeacher();
+    List<TeacherEntity> getAllTeacher();
+
+    TeacherEntity getTeacherById(Long id) throws TeacherNotFoundException;
+
+    TeacherEntity editTeacher(TeacherEntity teacher);
+
+    void  deleteTeacher(Long id);
 
 }

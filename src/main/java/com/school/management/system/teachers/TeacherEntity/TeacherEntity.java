@@ -1,10 +1,12 @@
 package com.school.management.system.teachers.TeacherEntity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -21,8 +23,33 @@ public class TeacherEntity {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private  Long id;
-    private  String name;
+
+    @NotBlank(message = "Every teacher must have a first name")
+    private  String first_name;
+
+    @NotBlank(message = "Every teacher must have a last name")
+    private  String last_name;
+
+    @NotBlank(message = "Every teacher must have a email")
+    private  String email;
+
+    @NotBlank(message = "Every teacher must have a phone number")
     private String phone;
+
+    @NotBlank(message = "Every teacher must have a DOB")
+    private  String dob;
+
+    @NotBlank(message = "Every teacher must have a Gender")
+    private  String gender;
+
+    @NotBlank(message = "Every teacher must have an address")
+    private  String address;
+
+    @NotBlank(message = "Every teacher must have Qualification")
+    private  String qualification;
+
+    private  String specialization;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
     @UpdateTimestamp
