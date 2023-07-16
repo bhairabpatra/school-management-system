@@ -1,12 +1,10 @@
 package com.school.management.system.teachers.TeacherController;
 
-import com.school.management.system.teachers.Exception.TeacherNotFoundException;
 import com.school.management.system.teachers.TeacherEntity.TeacherEntity;
 import com.school.management.system.teachers.TeacherService.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -30,7 +28,7 @@ public class TeacherController {
     }
 
     @GetMapping("getTeacher/{id}")
-    public ResponseEntity<TeacherEntity> getTeacher(@PathVariable Long id) throws TeacherNotFoundException {
+    public ResponseEntity<TeacherEntity> getTeacher(@PathVariable Long id){
         TeacherEntity teacher = teacherService.getTeacherById(id);
         return  new ResponseEntity<>(teacher,HttpStatus.OK);
     }

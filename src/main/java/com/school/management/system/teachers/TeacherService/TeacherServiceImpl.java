@@ -1,6 +1,5 @@
 package com.school.management.system.teachers.TeacherService;
 
-import com.school.management.system.teachers.Exception.TeacherNotFoundException;
 import com.school.management.system.teachers.TeacherEntity.TeacherEntity;
 import com.school.management.system.teachers.TeacherRepository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +26,9 @@ public class TeacherServiceImpl  implements TeacherService {
     }
 
     @Override
-    public TeacherEntity getTeacherById(Long id) throws TeacherNotFoundException {
-        if(id == null)
-            throw new TeacherNotFoundException("User id cant be Null");
+    public TeacherEntity getTeacherById(Long id)  {
         Optional<TeacherEntity> teacher = teacherRepo.findById(id);
-        if(teacher.isPresent())
             return  teacher.get();
-        throw new TeacherNotFoundException("Teacher id Not found");
     }
 
     @Override
